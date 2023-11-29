@@ -1,0 +1,43 @@
+<div class="sect">
+  <h2>{{ section.settings.h2 }}</h2>
+  <div class="descr">
+    {{ section.settings.text1 }}
+  </div>
+  <img src="{{ 'cat.jpg' | asset_img_url: 'medium' }}" alt="pix">
+</div>
+{% schema %}
+{
+  "name": "test",
+  "tag": "div",
+  "settings": [
+
+    {
+      "type": "richtext",
+      "id": "h2",
+      "label": "Заголовок"
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "label": "My setting label",
+      "default": "Enter text here"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "my section"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
