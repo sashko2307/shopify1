@@ -1,0 +1,70 @@
+<section class="s-slider s-section">
+	<div class="container">
+		<div class="row">
+			<div class="section-wrap">
+				<div class="h2-block col">
+					<h2>{{ section.settings.h2 }}</h2>
+					<div class="descr">
+						<p>errege</p>
+					</div>
+				</div>
+				<div class="wrap-items">
+					{% for block in section.blocks %}
+						{%  assign product = block.settings.product_id %}
+						<div class="item col">
+							<div class="ttl">{{ product.title }}</div>
+							<div class="img">
+								<img src="{{ product.featured_image | image_url: width: 200 }}" alt="p">
+							</div>
+							{{ product.price |  money }}
+						</div>
+						
+					  {% endfor %}
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.s-slider {
+		padding: 60px 0;
+	}
+	.s-slider .h2-block {
+		text-align: center;
+	}
+</style>
+{% schema %}
+{
+  "name": "Slick slider",
+  "tag": "section",
+  "class": "slider",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "h2",
+      "default": "<h2>Заголовок</h2>",
+      "label": "Заголовок секции"
+    }
+  ],
+  "blocks": [
+    {
+		"name": "Продукт",
+		"type": "slide",
+		"settings": [
+			{
+				"type": "product",
+				"id": "product_id",
+				"label": "Продукт"
+			}
+		]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slick slider"
+    }
+  ]
+}
+{% endschema %}
