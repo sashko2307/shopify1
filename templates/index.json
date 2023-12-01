@@ -1,5 +1,36 @@
 {
   "sections": {
+    "d65c13b8-7be9-44ef-a809-0d331255fd29": {
+      "type": "slider-slic",
+      "blocks": {
+        "ef38da6a-4bec-4c9a-9528-9e7fce2eadb4": {
+          "type": "slide",
+          "settings": {
+            "product_id": "the-collection-snowboard-oxygen"
+          }
+        },
+        "6b7bdfb7-996f-4048-93b5-a92a2b7020d8": {
+          "type": "slide",
+          "settings": {
+            "product_id": "the-collection-snowboard-hydrogen"
+          }
+        },
+        "b3bc5285-1f78-4187-99d4-0d6e332f01de": {
+          "type": "slide",
+          "settings": {
+            "product_id": "gift-card"
+          }
+        }
+      },
+      "block_order": [
+        "ef38da6a-4bec-4c9a-9528-9e7fce2eadb4",
+        "6b7bdfb7-996f-4048-93b5-a92a2b7020d8",
+        "b3bc5285-1f78-4187-99d4-0d6e332f01de"
+      ],
+      "settings": {
+        "h2": "<h2>Заголовок<\/h2>"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -48,7 +79,8 @@
       ],
       "settings": {
         "h2": "<p><em><strong>Моя секция<\/strong><\/em><\/p>",
-        "text1": "описание"
+        "text1": "описание",
+        "product": ""
       }
     },
     "featured_collection": {
@@ -81,6 +113,7 @@
     }
   },
   "order": [
+    "d65c13b8-7be9-44ef-a809-0d331255fd29",
     "image_banner",
     "f72238bd-efbe-4671-a752-35df2320ab5a",
     "featured_collection"

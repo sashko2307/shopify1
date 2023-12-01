@@ -1,23 +1,33 @@
-<section class="s-slider s-section">
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+{{ 'slick-theme.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'jquery.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+
+<section class="s-slider s-section-{{ section.id }}">
 	<div class="container">
 		<div class="row">
-			<div class="section-wrap">
+			<div class="section-wrap page-width">
 				<div class="h2-block col">
-					<h2>{{ section.settings.h2 }}</h2>
+					<h2>{{ section.settings.h2 }} </h2>
 					<div class="descr">
 						<p>errege</p>
 					</div>
 				</div>
 				<div class="wrap-items">
+
 					{% for block in section.blocks %}
-						{%  assign product = block.settings.product_id %}
-						<div class="item col">
-							<div class="ttl">{{ product.title }}</div>
-							<div class="img">
-								<img src="{{ product.featured_image | image_url: width: 200 }}" alt="p">
+
+						{% if block.settings.product_id != blank %}
+							{%  assign product = block.settings.product_id %}
+							<div class="item col">
+								<div class="ttl">{{ product.title }}</div>
+								<div class="img">
+									<img src="{{ product.featured_image | image_url: width: 200 }}" alt="p">
+								</div>
+								{{ product.price |  money }} <br> {{ block.settings.product_id }} <br>
+								s {{ section.settings.slidesToShow }}
 							</div>
-							{{ product.price |  money }}
-						</div>
+						{% endif %}
 						
 					  {% endfor %}
 					
@@ -26,6 +36,15 @@
 		</div>
 	</div>
 </section>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		$(".s-section-{{ section.id }} .wrap-items").slick({
+			slidesToShow: 2,
+		})
+	}, false);
+	
+</script>
 
 <style>
 	.s-slider {
@@ -46,7 +65,17 @@
       "id": "h2",
       "default": "<h2>Заголовок</h2>",
       "label": "Заголовок секции"
-    }
+    },
+	{
+		"type": "range",
+		"id": "slidesToShow",
+		"min": 1,
+		"max": 4,
+		"step": 1,
+		"unit": "шт",
+		"label": "Кол-во слайдов",
+		"default": 1
+	}
   ],
   "blocks": [
     {
